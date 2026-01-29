@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ShieldCheck, BadgeCheck, Loader2 } from 'lucide-react';
+import { ShieldCheck, BadgeCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface EducationalStepProps {
