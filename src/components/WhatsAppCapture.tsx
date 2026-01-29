@@ -90,14 +90,17 @@ export default function WhatsAppCapture({ calculatedValue, onComplete }: WhatsAp
                 <div className="space-y-6 md:space-y-8">
                     <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                         <div className="relative group max-w-sm mx-auto">
-                            <input
-                                type="tel"
-                                required
-                                placeholder="9xx xxx xxx"
-                                value={whatsapp}
-                                onChange={(e) => setWhatsapp(e.target.value.replace(/\D/g, '').slice(0, 9))}
-                                className="w-full text-2xl md:text-4xl font-black text-center py-4 md:py-6 px-4 bg-transparent border-b-2 md:border-b-4 border-gray-200 focus:border-[#D4AF37] outline-none transition-all placeholder:text-gray-200"
-                            />
+                            <div className="flex items-center justify-center border-b-2 md:border-b-4 border-gray-200 focus-within:border-[#D4AF37] transition-all">
+                                <span className="text-2xl md:text-4xl font-black text-gray-400 select-none">+351</span>
+                                <input
+                                    type="tel"
+                                    required
+                                    placeholder="9xx xxx xxx"
+                                    value={whatsapp}
+                                    onChange={(e) => setWhatsapp(e.target.value.replace(/\D/g, '').slice(0, 9))}
+                                    className="w-full max-w-[240px] text-2xl md:text-4xl font-black text-left py-4 md:py-6 pl-3 bg-transparent outline-none placeholder:text-gray-200"
+                                />
+                            </div>
                             <div className="mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center justify-center gap-2">
                                 <div className="p-1 bg-[#25D366] rounded-full">
                                     <MessageSquare size={10} className="text-white fill-current" />
