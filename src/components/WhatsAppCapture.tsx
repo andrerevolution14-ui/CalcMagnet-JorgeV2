@@ -23,7 +23,7 @@ export default function WhatsAppCapture({ calculatedValue, onComplete }: WhatsAp
         // Track Facebook Lead Event (Value 2 as requested)
         trackLead(2);
 
-        setTimeout(() => onComplete(whatsapp), 1500);
+        setTimeout(() => onComplete(whatsapp), 800);
     };
 
     return (

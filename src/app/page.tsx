@@ -59,14 +59,29 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen overflow-x-hidden">
+    <main className="min-h-screen overflow-x-hidden bg-[#FCFCFA]">
+      {/* Global Progress Bar */}
+      <div className="fixed top-0 left-0 w-full h-1.5 z-[100] bg-gray-100/50">
+        <motion.div
+          className="h-full bg-gradient-to-r from-[#D4AF37] to-[#F5E1A4]"
+          animate={{
+            width: step === 'hero' ? '0%' :
+              step === 'quiz' ? '25%' :
+                step === 'educational' ? '50%' :
+                  step === 'whatsapp' ? '75%' : '100%'
+          }}
+          transition={{ type: "spring", damping: 20, stiffness: 50 }}
+        />
+      </div>
+
       <AnimatePresence mode="wait">
         {step === 'hero' && (
           <motion.div
             key="hero"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.4 }}
           >
             <Hero onStart={nextStep} />
           </motion.div>
@@ -75,9 +90,10 @@ export default function Home() {
         {step === 'quiz' && (
           <motion.div
             key="quiz"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 10, scale: 0.98 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -10, scale: 0.98 }}
+            transition={{ type: "spring", damping: 25, stiffness: 120 }}
           >
             <Quiz
               onComplete={(data: QuizData) => {
@@ -96,9 +112,10 @@ export default function Home() {
         {step === 'educational' && (
           <motion.div
             key="educational"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ type: "spring", damping: 20, stiffness: 80 }}
           >
             <EducationalStep onContinue={nextStep} />
           </motion.div>
@@ -107,9 +124,10 @@ export default function Home() {
         {step === 'whatsapp' && (
           <motion.div
             key="whatsapp"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{ type: "spring", damping: 20, stiffness: 100 }}
           >
             <WhatsAppCapture
               calculatedValue={formData.calculatedValue}
@@ -121,8 +139,9 @@ export default function Home() {
         {step === 'results' && (
           <motion.div
             key="results"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <Results data={formData} />
           </motion.div>
