@@ -8,7 +8,7 @@ import Quiz, { QuizData } from '@/components/Quiz';
 import EducationalStep from '@/components/EducationalStep';
 import WhatsAppCapture from '@/components/WhatsAppCapture';
 import Results from '@/components/Results';
-import { saveLead } from '@/lib/pocketbase';
+import { saveLeadAction } from '@/app/actions';
 
 export type FunnelStep = 'hero' | 'quiz' | 'educational' | 'whatsapp' | 'results';
 
@@ -37,19 +37,24 @@ export default function Home() {
   };
 
   const handleCompleteLead = async (whatsapp: string) => {
-    const finalData = {
-      ...formData,
-      whatsapp,
-      timestamp: new Date().toISOString(),
+    // This runs on the server through the Action, bypassing browser Mixed Content blocks
+    await saveLeadAction({
+      Whatsapp: whatsapp,
+      type: formData.type,
+      area_m2: formData.area_m2,
+      roomType: formData.roomType,
+      roomSize: formData.roomSize,
+      condition: formData.condition,
       estimate: formData.calculatedValue || 0
-    };
+    });
+
     setFormData(prev => ({
       ...prev,
       whatsapp,
       calculatedValue: prev.calculatedValue || 0,
       area_m2: prev.area_m2 || 0
     }));
-    await saveLead(finalData);
+
     setStep('results');
   };
 
