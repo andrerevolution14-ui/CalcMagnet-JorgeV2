@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase';
 
 // Replace with your actual PocketBase URL
-const PB_URL = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'https://default-pocketbase-url.com';
+const PB_URL = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://76.13.11.36:8090';
 
 const pb = new PocketBase(PB_URL);
 
