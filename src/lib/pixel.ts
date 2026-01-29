@@ -7,8 +7,8 @@ export const FB_PIXEL_ID = '920621233729145';
 
 declare global {
     interface Window {
-        fbq: any;
-        _fbq: any;
+        fbq: (...args: unknown[]) => void;
+        _fbq: unknown;
     }
 }
 
