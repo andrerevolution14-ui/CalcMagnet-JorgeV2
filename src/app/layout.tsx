@@ -25,7 +25,7 @@ export default function RootLayout({
       <head>
         {/* Head content managed below via next/script */}
       </head>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${inter.className} bg-[#FCFCFA]`} suppressHydrationWarning>
         <Suspense fallback={null}>
           <FacebookPixel />
           <Clarity />
