@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hero from '@/components/Hero';
-import Quiz from '@/components/Quiz';
+import Quiz, { QuizData } from '@/components/Quiz';
 import EducationalStep from '@/components/EducationalStep';
 import WhatsAppCapture from '@/components/WhatsAppCapture';
 import Results from '@/components/Results';
@@ -11,14 +11,20 @@ import { saveLead } from '@/lib/pocketbase';
 
 export type FunnelStep = 'hero' | 'quiz' | 'educational' | 'whatsapp' | 'results';
 
+export interface FullLeadData extends QuizData {
+  whatsapp: string;
+  area_m2: number;
+  calculatedValue: number;
+}
+
 export default function Home() {
   const [step, setStep] = useState<FunnelStep>('hero');
-  const [formData, setFormData] = useState<any>({
-    type: '',
-    area: 0,
-    roomType: '',
-    roomSize: '',
-    condition: '',
+  const [formData, setFormData] = useState<FullLeadData>({
+    type: 'full_house',
+    area_m2: 0,
+    roomType: 'Sala',
+    roomSize: 'Médio',
+    condition: 'medium',
     whatsapp: '',
     calculatedValue: 0,
   });
@@ -34,9 +40,14 @@ export default function Home() {
       ...formData,
       whatsapp,
       timestamp: new Date().toISOString(),
-      estimate: formData.calculatedValue
+      estimate: formData.calculatedValue || 0
     };
-    setFormData(finalData);
+    setFormData(prev => ({
+      ...prev,
+      whatsapp,
+      calculatedValue: prev.calculatedValue || 0,
+      area_m2: prev.area_m2 || 0
+    }));
     await saveLead(finalData);
     setStep('results');
   };
@@ -63,8 +74,13 @@ export default function Home() {
             exit={{ opacity: 0, x: -20 }}
           >
             <Quiz
-              onComplete={(data: any) => {
-                setFormData({ ...formData, ...data });
+              onComplete={(data: QuizData) => {
+                setFormData(prev => ({
+                  ...prev,
+                  ...data,
+                  area_m2: data.area_m2 ?? prev.area_m2,
+                  calculatedValue: data.calculatedValue || 0
+                }));
                 nextStep();
               }}
             />

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronRight, ArrowLeft, Info, HelpCircle } from 'lucide-react';
-import { calculateEstimate, CalculationInput, RemodelingType, RoomType, RoomSize, Condition } from '@/utils/calculator';
+import { calculateEstimate, CalculationInput } from '@/utils/calculator';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
@@ -30,7 +30,7 @@ export default function Quiz({ onComplete }: QuizProps) {
     const currentIndex = stepsList.indexOf(step);
     const totalSteps = stepsList.length;
 
-    const handleSelect = (field: string, value: any, next?: QuizStep) => {
+    const handleSelect = (field: keyof QuizData, value: string | number, next?: QuizStep) => {
         const newData = { ...data, [field]: value };
         setData(newData);
 

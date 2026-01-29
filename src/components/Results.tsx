@@ -8,7 +8,7 @@ interface ResultsProps {
     data: {
         calculatedValue: number;
         type: string;
-        area: number;
+        area_m2: number;
         roomType?: string;
         roomSize?: string;
         condition: string;
