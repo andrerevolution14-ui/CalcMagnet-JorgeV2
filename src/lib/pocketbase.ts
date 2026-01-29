@@ -18,8 +18,15 @@ export interface Lead {
 
 export const saveLead = async (leadData: Lead) => {
     try {
-        // In production, ensure the 'leads' collection exists
-        // await pb.collection('leads').create(leadData);
+        await pb.collection('CalcMagnet_JorgeV2').create({
+            Whatsapp: leadData.whatsapp,
+            type: leadData.type,
+            area_m2: leadData.area_m2,
+            roomType: leadData.roomType,
+            roomSize: leadData.roomSize,
+            condition: leadData.condition,
+            estimate: leadData.estimate
+        });
         console.log('Lead capturing logic executed for:', leadData.whatsapp);
         return true;
     } catch (error) {

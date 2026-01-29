@@ -65,19 +65,15 @@ export default function Results({ data }: ResultsProps) {
 
             <div className="max-w-6xl mx-auto px-6 space-y-20 md:space-y-32 -mt-10">
 
-                {/* 1. O QUE INCLUÍMOS SECTION */}
+                {/* 1. O QUE CALCULÁMOS SECTION */}
                 <div className="premium-card !p-0 shadow-2xl relative z-10">
                     <div className="bg-[#111111] p-6 md:p-8 flex items-center justify-between text-white">
                         <div className="flex items-center gap-4">
-                            <Zap className="text-[#D4AF37]" size={32} />
-                            <h3 className="font-black italic">O que garantimos neste valor</h3>
-                        </div>
-                        <div className="hidden md:flex gap-4">
-                            <Users size={20} className="opacity-40" />
-                            <Star size={20} className="opacity-40" />
+                            <Zap className="text-[#D4AF37]" size={24} />
+                            <h3 className="text-lg md:text-xl font-black italic">O que calculámos neste valor</h3>
                         </div>
                     </div>
-                    <div className="p-8 md:p-14 grid md:grid-cols-2 gap-10 md:gap-16">
+                    <div className="p-6 md:p-14 grid md:grid-cols-2 gap-8 md:gap-16">
                         <div className="space-y-6">
                             <IncludedItem title="Mão-de-Obra Regional" desc="Equipas de Aveiro que conhecem as técnicas e materiais ideais para as nossas casas." />
                             <IncludedItem title="Materiais de Elevada Durabilidade" desc="Seleção criteriosa para garantir que a tua casa se mantém impecável por décadas." />
@@ -90,16 +86,16 @@ export default function Results({ data }: ResultsProps) {
                 </div>
 
                 {/* 2. THE ERROR BLOCK (VALUE FIRST) */}
-                <section className="space-y-10">
-                    <div className="text-center space-y-4 max-w-2xl mx-auto">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 rounded-full text-xs font-black uppercase tracking-widest">
-                            <AlertTriangle size={16} />
-                            <span>Alerta para Proprietários</span>
+                <section className="space-y-8 md:space-y-10">
+                    <div className="text-center space-y-4 max-w-2xl mx-auto px-4">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 rounded-full text-[10px] font-black uppercase tracking-widest">
+                            <AlertTriangle size={14} />
+                            <span>Alerta de Planeamento</span>
                         </div>
-                        <h2 className="text-[#111111]">90% das remodelações em casas com +20 anos cometem estes erros</h2>
+                        <h2 className="text-2xl md:text-5xl text-[#111111]">90% das remodelações em Aveiro cometem estes erros</h2>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-6">
+                    <div className="grid md:grid-cols-3 gap-4 md:gap-6">
                         <ErrorCard
                             error="Ignorar a Saúde das Paredes"
                             cost="€1.800+"
@@ -117,103 +113,95 @@ export default function Results({ data }: ResultsProps) {
                         />
                     </div>
 
-                    <div className="bg-[#D4AF37]/5 p-8 rounded-[40px] border border-[#D4AF37]/10 text-center">
-                        <p className="text-xl text-[#111111] font-bold">
-                            "Em média, estas falhas custam <span className="text-red-600">€4.000 extra</span> a quem não planeia o 'depois' antes de começar."
+                    <div className="bg-[#D4AF37]/5 p-6 md:p-8 rounded-[32px] md:rounded-[40px] border border-[#D4AF37]/10 text-center mx-4">
+                        <p className="text-lg md:text-xl text-[#111111] font-bold">
+                            "Em média, estas falhas custam <span className="text-red-600">€4.000 extra</span> a quem não planeia antes de começar."
                         </p>
                     </div>
                 </section>
 
                 {/* 3. ESPECIALISTA LOCAL SECTION (REWORKED COPY) */}
-                <section className="premium-card grid md:grid-cols-2 gap-12 items-center !bg-white">
-                    <div className="space-y-8">
+                <section className="premium-card grid md:grid-cols-2 gap-8 md:gap-12 items-center !bg-white">
+                    <div className="space-y-6 md:space-y-8">
                         <div className="space-y-4">
-                            <div className="trust-label !bg-gray-50">
-                                <MapPin size={14} className="text-[#D4AF37]" />
-                                <span>Especialistas na Região de Aveiro</span>
+                            <div className="trust-label !bg-gray-50 max-w-fit">
+                                <MapPin size={12} className="text-[#D4AF37]" />
+                                <span>Expertise Local</span>
                             </div>
-                            <h2 className="text-[#111111]">Esquece a desconfiança típica das obras.</h2>
-                            <p className="text-lg text-[#4B5563] font-medium leading-relaxed">
-                                Sabemos que o setor da construção tem má fama. Orçamentos que explodem, prazos infinitos e resultados que nada têm a ver com o sonho original. Aqui, a nossa missão é dar-te <b>clareza e segurança absoluta</b> antes de mexeres na primeira parede.
+                            <h2 className="text-2xl md:text-5xl text-[#111111]">Clareza absoluta para a tua obra.</h2>
+                            <p className="text-sm md:text-lg text-[#4B5563] font-medium leading-relaxed">
+                                Sabemos que o setor da construção pode ser intimidante. Orçamentos incertos e prazos que nunca acabam. A nossa missão é dar-te <b>segurança absoluta</b> antes de mexeres na primeira parede da tua casa.
                             </p>
                         </div>
-                        <div className="space-y-4">
+                        <div className="space-y-3 md:space-y-4">
                             <AuthorityPoint text="Segurança técnica em cada decisão" />
-                            <AuthorityPoint text="Segurança total: sem orçamentos que explodem" />
-                            <AuthorityPoint text="Uma conversa honesta, de quem conhece a nossa cidade" />
+                            <AuthorityPoint text="Controle total sobre o investimento" />
+                            <AuthorityPoint text="Uma conversa honesta e profissional" />
                         </div>
                     </div>
                     <div className="relative">
-                        <div className="absolute inset-x-0 -bottom-10 h-0 w-full animate-bounce md:hidden" />
-                        <div className="relative bg-white border border-gray-100 p-8 md:p-12 rounded-[40px] shadow-xl space-y-8">
-                            <h3 className="text-[#111111] text-center">Como te ajudamos a avançar:</h3>
-                            <div className="space-y-4">
-                                <StepItem num="1" title="Análise da tua Planta" desc="Validamos os teus desejos com a viabilidade técnica da casa." />
-                                <StepItem num="2" title="Clareza de Escolhas" desc="Ajudamos-te a escolher materiais que valorizam o teu património." />
-                                <StepItem num="3" title="Execução sem Stress" desc="Prazos cumpridos e equipas impecáveis em tua casa." />
+                        <div className="relative bg-white border border-gray-100 p-6 md:p-12 rounded-[32px] md:rounded-[40px] shadow-xl space-y-6 md:space-y-8">
+                            <h3 className="text-lg md:text-2xl text-[#111111] text-center">Como avançamos juntos:</h3>
+                            <div className="space-y-4 md:space-y-6">
+                                <StepItem num="1" title="Análise Técnica" desc="Validamos os teus desejos com a viabilidade real da casa." />
+                                <StepItem num="2" title="Escolha Consciente" desc="Ajudamos-te a escolher materiais que valorizam o teu imóvel." />
+                                <StepItem num="3" title="Gestão de Obra" desc="Prazos cumpridos e equipas impecáveis no terreno." />
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* 4. FINAL CTA REDESIGNED */}
-                <section className="max-w-3xl mx-auto text-center space-y-12">
-                    <div className="space-y-4">
-                        <h2 className="text-[#111111]">Pronto para dar o próximo passo?</h2>
-                        <p className="text-xl text-[#4B5563] font-medium">
-                            Envia-nos a tua simulação para validarmos o orçamento com os nossos técnicos locais.
+                <section className="max-w-3xl mx-auto text-center space-y-8 md:space-y-12 pb-12">
+                    <div className="space-y-4 px-4">
+                        <h2 className="text-2xl md:text-5xl text-[#111111]">Pronto para a clareza total?</h2>
+                        <p className="text-sm md:text-xl text-[#4B5563] font-medium">
+                            Validamos este orçamento com o nosso conhecimento técnico regional.
                         </p>
                     </div>
 
-                    <div className="relative group flex flex-col items-center">
-                        {/* THE BUTTON - MUCH MORE WORKED */}
+                    <div className="flex flex-col items-center px-4">
                         <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             onClick={handleWhatsApp}
-                            className="btn-whatsapp-premium w-full md:w-auto min-w-[360px] shimmer-premium group overflow-hidden"
+                            className="btn-whatsapp-premium w-full md:w-auto min-w-0 md:min-w-[400px] shimmer-premium"
                         >
                             <div className="flex items-center gap-3">
-                                <MessageSquare size={28} />
-                                <div className="flex flex-col items-start leading-none">
-                                    <span className="text-lg md:text-xl font-black italic">Validar este orçamento com um especialista</span>
-                                    <span className="text-[10px] md:text-xs font-bold opacity-80 mt-1">SEM COMPROMISSOS E 100% GRÁTIS</span>
+                                <MessageSquare size={24} className="shrink-0" />
+                                <div className="flex flex-col items-center leading-tight">
+                                    <span className="text-sm md:text-lg font-black italic">Validar Orçamento com Especialista</span>
+                                    <span className="text-[9px] md:text-[10px] font-bold opacity-80 mt-0.5">SEM COMPROMISSO E 100% GRÁTIS</span>
                                 </div>
                             </div>
                         </motion.button>
 
-                        <div className="mt-8 flex flex-col items-center gap-4">
-                            <div className="flex -space-x-4">
-                                {[1, 2, 3, 4].map(i => (
-                                    <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-gray-200 overflow-hidden shadow-md">
-                                        <img src={`/img/face${i}.png`} alt={`Specialist ${i}`} className="w-full h-full object-cover" />
-                                    </div>
-                                ))}
+                        <div className="mt-6 flex items-center gap-3 opacity-60">
+                            <div className="p-1 bg-[#25D366] rounded-full">
+                                <MessageSquare size={10} className="text-white fill-current" />
                             </div>
-                            <p className="text-sm font-black text-[#111111] uppercase tracking-widest">
-                                +150 Pedidos validados este mês
-                            </p>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-[#111111]">Resposta em menos de 2h</span>
                         </div>
                     </div>
                 </section>
             </div>
 
             {/* STICKY CTA MOBILE */}
-            <div className="md:hidden fixed bottom-6 left-6 right-6 z-[100] flex flex-col items-center gap-4">
+            <div className="md:hidden fixed bottom-6 left-6 right-6 z-[100] flex flex-col items-center gap-3">
                 <motion.div
-                    animate={{ y: [0, -5, 0] }}
+                    animate={{ y: [0, -3, 0] }}
                     transition={{ repeat: Infinity, duration: 2 }}
-                    className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-[#D4AF37]/30 shadow-lg text-[10px] font-black text-[#D4AF37] uppercase tracking-widest"
+                    className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-[#D4AF37]/20 shadow-md text-[9px] font-black text-[#D4AF37] uppercase tracking-[0.1em]"
                 >
-                    Caminho seguro: Ver potencial agora
+                    Ferramenta de Orçamentação Digital
                 </motion.div>
                 <button
                     onClick={handleWhatsApp}
-                    className="btn-whatsapp-premium w-full !py-5 shadow-[0_20px_60px_rgba(0,0,0,0.3)] shimmer-premium"
+                    className="btn-whatsapp-premium w-full !py-4 shadow-2xl !rounded-2xl"
                 >
-                    <div className="flex items-center gap-3">
-                        <MessageSquare size={20} />
-                        <span className="text-base">Validar Orçamento (Grátis)</span>
+                    <div className="flex items-center gap-2">
+                        <MessageSquare size={18} />
+                        <span className="text-sm">Validar Orçamento Agora</span>
                     </div>
                 </button>
             </div>
