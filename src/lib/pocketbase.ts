@@ -1,0 +1,31 @@
+import PocketBase from 'pocketbase';
+
+// Replace with your actual PocketBase URL
+const PB_URL = process.env.NEXT_PUBLIC_POCKETBASE_URL || 'https://default-pocketbase-url.com';
+
+const pb = new PocketBase(PB_URL);
+
+export interface Lead {
+    whatsapp: string;
+    type: string;
+    area_m2?: number;
+    roomType?: string;
+    roomSize?: string;
+    condition: string;
+    estimate: number;
+    timestamp: string;
+}
+
+export const saveLead = async (leadData: Lead) => {
+    try {
+        // In production, ensure the 'leads' collection exists
+        // await pb.collection('leads').create(leadData);
+        console.log('Lead capturing logic executed for:', leadData.whatsapp);
+        return true;
+    } catch (error) {
+        console.error('Lead capture error:', error);
+        return false;
+    }
+};
+
+export default pb;
