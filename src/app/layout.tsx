@@ -5,6 +5,8 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import { FacebookPixel } from "@/lib/pixel";
 
+import { Suspense } from "react";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -34,7 +36,9 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className} suppressHydrationWarning>
-        <FacebookPixel />
+        <Suspense fallback={null}>
+          <FacebookPixel />
+        </Suspense>
         <Script
           id="fb-pixel"
           strategy="afterInteractive"
