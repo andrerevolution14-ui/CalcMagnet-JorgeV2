@@ -2,24 +2,28 @@
 
 import { useState } from 'react';
 import { ChevronRight, ArrowLeft, Info, HelpCircle } from 'lucide-react';
-import { calculateEstimate } from '@/utils/calculator';
+import { calculateEstimate, CalculationInput, RemodelingType, RoomType, RoomSize, Condition } from '@/utils/calculator';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
+export interface QuizData extends CalculationInput {
+    calculatedValue?: number;
+}
+
 interface QuizProps {
-    onComplete: (data: any) => void;
+    onComplete: (data: QuizData) => void;
 }
 
 type QuizStep = 'type' | 'area' | 'roomType' | 'roomSize' | 'condition';
 
 export default function Quiz({ onComplete }: QuizProps) {
     const [step, setStep] = useState<QuizStep>('type');
-    const [data, setData] = useState<any>({
-        type: '',
+    const [data, setData] = useState<QuizData>({
+        type: 'full_house',
         area_m2: 0,
-        roomType: '',
-        roomSize: '',
-        condition: '',
+        roomType: 'Sala',
+        roomSize: 'Médio',
+        condition: 'medium',
     });
 
     const stepsList: QuizStep[] = ['type', data.type === 'full_house' ? 'area' : 'roomType', data.type === 'single_room' ? 'roomSize' : null, 'condition'].filter(Boolean) as QuizStep[];
@@ -177,7 +181,7 @@ export default function Quiz({ onComplete }: QuizProps) {
                             <div className="flex items-center gap-3 p-5 bg-[#D4AF37]/10 rounded-3xl border border-[#D4AF37]/20">
                                 <HelpCircle size={20} className="text-[#D4AF37]" />
                                 <p className="text-xs font-bold text-[#4B5563] leading-relaxed italic">
-                                    "A precisão do cálculo depende da tua honestidade nestes dados. Usamos custos de mão-de-obra real de Aveiro."
+                                    &quot;A precisão do cálculo depende da tua honestidade nestes dados. Usamos custos de mão-de-obra real de Aveiro.&quot;
                                 </p>
                             </div>
                         </div>

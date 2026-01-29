@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, ArrowRight, ShieldCheck, BadgeCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck, BadgeCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface EducationalStepProps {

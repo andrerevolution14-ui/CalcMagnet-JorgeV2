@@ -1,15 +1,22 @@
 "use client";
 
-import { MessageSquare, Info, Lightbulb, MapPin, CheckCircle2, Zap, Check, Star, Users, Phone, ChevronDown, AlertTriangle, ShieldCheck, TrendingDown, Target } from 'lucide-react';
+import { MessageSquare, MapPin, Zap, Check, ChevronDown, AlertTriangle, ShieldCheck, Target } from 'lucide-react';
 import { formatCurrency } from '@/utils/calculator';
 import { motion } from 'framer-motion';
 
 interface ResultsProps {
-    data: any;
+    data: {
+        calculatedValue: number;
+        type: string;
+        area: number;
+        roomType?: string;
+        roomSize?: string;
+        condition: string;
+    };
 }
 
 export default function Results({ data }: ResultsProps) {
-    const { calculatedValue, whatsapp } = data;
+    const { calculatedValue } = data;
 
     // Direct WhatsApp Link (Removed name Jorge as requested)
     const whatsappLink = `https://api.whatsapp.com/send?phone=351912050979&text=Ol%C3%A1!%20%F0%9F%91%8B%20Acabei%20de%20usar%20o%20vosso%20simulador%20e%20fiquei%20impressionado%20com%20o%20resultado.%20Gostava%20de%20saber%20a%20vossa%20opini%C3%A3o%20profissional%3A%20Como%20podemos%20fazer%20para%20avan%C3%A7ar%20para%20um%20or%C3%A7amento%3F%20Obrigado!`;
@@ -115,7 +122,7 @@ export default function Results({ data }: ResultsProps) {
 
                     <div className="bg-[#D4AF37]/5 p-6 md:p-8 rounded-[32px] md:rounded-[40px] border border-[#D4AF37]/10 text-center mx-4">
                         <p className="text-lg md:text-xl text-[#111111] font-bold">
-                            "Em média, estas falhas custam <span className="text-red-600">€4.000 extra</span> a quem não planeia antes de começar."
+                            &quot;Em média, estas falhas custam <span className="text-red-600">€4.000 extra</span> a quem não planeia antes de começar.&quot;
                         </p>
                     </div>
                 </section>

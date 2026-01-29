@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { MessageSquare, ShieldCheck, Star, Users, Lock, ArrowRight } from 'lucide-react';
+import { MessageSquare, ShieldCheck, Star, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface WhatsAppCaptureProps {
