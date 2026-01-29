@@ -3,6 +3,7 @@
 import { MessageSquare, MapPin, Zap, Check, ChevronDown, AlertTriangle, ShieldCheck, Target } from 'lucide-react';
 import { formatCurrency } from '@/utils/calculator';
 import { motion } from 'framer-motion';
+import { trackHighLead } from '@/lib/pixel';
 
 interface ResultsProps {
     data: {
@@ -18,10 +19,12 @@ interface ResultsProps {
 export default function Results({ data }: ResultsProps) {
     const { calculatedValue } = data;
 
-    // Direct WhatsApp Link (Removed name Jorge as requested)
-    const whatsappLink = `https://api.whatsapp.com/send?phone=351912050979&text=Ol%C3%A1!%20%F0%9F%91%8B%20Acabei%20de%20usar%20o%20vosso%20simulador%20e%20fiquei%20impressionado%20com%20o%20resultado.%20Gostava%20de%20saber%20a%20vossa%20opini%C3%A3o%20profissional%3A%20Como%20podemos%20fazer%20para%20avan%C3%A7ar%20para%20um%20or%C3%A7amento%3F%20Obrigado!`;
+    // Direct WhatsApp Link (Updated to user's new link)
+    const whatsappLink = `https://wa.link/00orml`;
 
     const handleWhatsApp = () => {
+        // Track Facebook HighLead Event (Value 3 as requested)
+        trackHighLead(3);
         window.open(whatsappLink, '_blank');
     };
 

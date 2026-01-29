@@ -112,6 +112,7 @@ export default function Home() {
             exit={{ opacity: 0, y: -20 }}
           >
             <WhatsAppCapture
+              calculatedValue={formData.calculatedValue}
               onComplete={handleCompleteLead}
             />
           </motion.div>
