@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-PT">
+    <html lang="pt-PT" suppressHydrationWarning>
       <head>
         {/* Microsoft Clarity */}
         <script
@@ -31,7 +31,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         {children}
         <Analytics />
       </body>

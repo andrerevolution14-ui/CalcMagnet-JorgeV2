@@ -26,6 +26,7 @@ export default function EducationalStep({ onContinue }: EducationalStepProps) {
                 </div>
 
                 <div className="space-y-6">
+                    <InsightItem text="A tua casa tem muito mais potencial (e valor de mercado) do que imaginas - basta saber onde mexer." />
                     <InsightItem text="Sabias que 60% do sucesso da tua obra em Aveiro depende da escolha da equipa certa?" />
                     <InsightItem text="Podes poupar até 2.000€ apenas com um bom planeamento inicial." />
                 </div>
