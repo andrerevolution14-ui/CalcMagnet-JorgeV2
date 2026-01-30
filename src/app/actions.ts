@@ -15,6 +15,7 @@ export interface LeadData {
     estimate: number;
     Q1?: string;
     Q2?: string;
+    Q2A?: string;
     Q3?: string;
 }
 

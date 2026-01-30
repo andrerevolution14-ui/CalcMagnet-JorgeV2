@@ -1,7 +1,7 @@
 export const BASE_PRICE_PER_M2 = 550;
 
 export type RemodelingType = 'full_house' | 'single_room';
-export type RoomType = 'Quarto' | 'Sala' | 'Casa de banho' | 'Cozinha';
+export type RoomType = 'Quarto' | 'Sala' | 'WC' | 'Cozinha';
 export type RoomSize = 'Pequeno' | 'Médio' | 'Grande';
 export type Condition = 'light' | 'medium' | 'total';
 
@@ -22,7 +22,7 @@ const ROOM_SIZE_M2: Record<string, number> = {
 const ROOM_TYPE_COEFFICIENT: Record<string, number> = {
     'Quarto': 0.90,
     'Sala': 1.00,
-    'Casa de banho': 1.30,
+    'WC': 1.30,
     'Cozinha': 1.45,
 };
 

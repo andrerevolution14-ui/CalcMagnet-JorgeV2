@@ -138,7 +138,7 @@ export default function Quiz({ onComplete }: QuizProps) {
                                     tip="Cozinhas e WC são as zonas mais caras por m² devido à canalização e revestimentos."
                                 />
                                 <div className="grid gap-3">
-                                    {['Cozinha', 'Casa de banho', 'Sala', 'Quarto'].map(r => (
+                                    {['Cozinha', 'Sala', 'Quarto', 'WC'].map(r => (
                                         <OptionButton
                                             key={r}
                                             label={r}

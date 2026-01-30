@@ -39,23 +39,22 @@ export default function Home() {
   const handleCompleteLead = async (whatsapp: string) => {
     // This runs on the server through the Action, bypassing browser Mixed Content blocks
     // Map Quiz Data to Human Readable Answers for PocketBase
-    // IMPORTANT: These values map strictly to the PocketBase Select Options shown in the screenshot!
+    // IMPORTANT: These values map strictly to the PocketBase Select Options!
     const q1Answer = formData.type === 'full_house' ? 'Casa Toda' : 'Espaço';
 
-    let q2Answer = '';
+    let q2Answer = ''; // For T-Typology (Casa Toda)
+    let q2aAnswer = ''; // For Room Type (Espaço)
+
     if (formData.type === 'full_house') {
       if (formData.area_m2 === 62) q2Answer = "t0/t1";
       else if (formData.area_m2 === 87) q2Answer = "t2";
       else if (formData.area_m2 === 125) q2Answer = "t3";
       else if (formData.area_m2 === 165) q2Answer = "t4";
-      else q2Answer = `${formData.area_m2} m²`;
+      else q2Answer = "t2"; // Default fallback to prevent empty errors
     } else {
-      // For single rooms, we send the formatted string.
-      // NOTE: The User MUST add these options to the Q2 Select field in PocketBase for this to work!
-      const sizeLabel = formData.roomSize === 'Pequeno' ? 'Compacto' :
-        formData.roomSize === 'Médio' ? 'Standard' :
-          formData.roomSize === 'Grande' ? 'Espaçoso' : formData.roomSize;
-      q2Answer = `${formData.roomType} - ${sizeLabel}`;
+      // Q2A for Room Type - now uses exact PocketBase values
+      // Options in PB: Cozinha, Sala, Quarto, WC
+      q2aAnswer = formData.roomType || 'Sala';
     }
 
     let q3Answer = '';
@@ -63,7 +62,7 @@ export default function Home() {
       case 'light': q3Answer = "Bom"; break;
       case 'medium': q3Answer = "Atualiazaçao"; break; // Matches typo in PB Screenshot
       case 'total': q3Answer = "Degradado"; break;
-      default: q3Answer = formData.condition;
+      default: q3Answer = "Atualiazaçao"; // Default fallback
     }
 
     const result = await saveLeadAction({
@@ -76,6 +75,7 @@ export default function Home() {
       estimate: formData.calculatedValue || 0,
       Q1: q1Answer,
       Q2: q2Answer,
+      Q2A: q2aAnswer,
       Q3: q3Answer
     });
 
