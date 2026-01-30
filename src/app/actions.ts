@@ -25,11 +25,12 @@ export async function saveLeadAction(data: LeadData) {
         const record = await pb.collection('CalcMagnet_JorgeV2').create(data);
         console.log('Server Action: Success!', record.id);
         return { success: true, id: record.id };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Server Action Error:', error);
         // PocketBase errors
-        const errorMessage = error?.response?.message || error?.message || String(error);
-        const errorData = error?.response?.data || {};
+        const err = error as { response?: { message?: string; data?: Record<string, unknown> }; message?: string };
+        const errorMessage = err?.response?.message || err?.message || String(error);
+        const errorData = err?.response?.data || {};
 
         console.error('Detailed PB Error:', JSON.stringify(errorData, null, 2));
 
