@@ -39,16 +39,19 @@ export default function Home() {
   const handleCompleteLead = async (whatsapp: string) => {
     // This runs on the server through the Action, bypassing browser Mixed Content blocks
     // Map Quiz Data to Human Readable Answers for PocketBase
-    const q1Answer = formData.type === 'full_house' ? 'Reabilitação Integral' : 'Intervenção Pontual';
+    // IMPORTANT: These values map strictly to the PocketBase Select Options shown in the screenshot!
+    const q1Answer = formData.type === 'full_house' ? 'Casa Toda' : 'Espaço';
 
     let q2Answer = '';
     if (formData.type === 'full_house') {
-      if (formData.area_m2 === 62) q2Answer = "Pequeno (T0/T1)";
-      else if (formData.area_m2 === 87) q2Answer = "Médio (T2)";
-      else if (formData.area_m2 === 125) q2Answer = "Grande (T3)";
-      else if (formData.area_m2 === 165) q2Answer = "Master (T4+)";
+      if (formData.area_m2 === 62) q2Answer = "t0/t1";
+      else if (formData.area_m2 === 87) q2Answer = "t2";
+      else if (formData.area_m2 === 125) q2Answer = "t3";
+      else if (formData.area_m2 === 165) q2Answer = "t4";
       else q2Answer = `${formData.area_m2} m²`;
     } else {
+      // For single rooms, we send the formatted string.
+      // NOTE: The User MUST add these options to the Q2 Select field in PocketBase for this to work!
       const sizeLabel = formData.roomSize === 'Pequeno' ? 'Compacto' :
         formData.roomSize === 'Médio' ? 'Standard' :
           formData.roomSize === 'Grande' ? 'Espaçoso' : formData.roomSize;
@@ -57,9 +60,9 @@ export default function Home() {
 
     let q3Answer = '';
     switch (formData.condition) {
-      case 'light': q3Answer = "Bom Estado"; break;
-      case 'medium': q3Answer = "Necessita Atualização"; break;
-      case 'total': q3Answer = "Degradado / Total"; break;
+      case 'light': q3Answer = "Bom"; break;
+      case 'medium': q3Answer = "Atualiazaçao"; break; // Matches typo in PB Screenshot
+      case 'total': q3Answer = "Degradado"; break;
       default: q3Answer = formData.condition;
     }
 
