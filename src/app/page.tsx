@@ -63,7 +63,7 @@ export default function Home() {
       default: q3Answer = formData.condition;
     }
 
-    await saveLeadAction({
+    const result = await saveLeadAction({
       Whatsapp: whatsapp,
       type: formData.type,
       area_m2: formData.area_m2,
@@ -75,6 +75,11 @@ export default function Home() {
       Q2: q2Answer,
       Q3: q3Answer
     });
+
+    console.log("PocketBase Save Result:", result);
+    if (!result || !result.success) {
+      console.error("Failed to save to PocketBase:", result);
+    }
 
     setFormData(prev => ({
       ...prev,
