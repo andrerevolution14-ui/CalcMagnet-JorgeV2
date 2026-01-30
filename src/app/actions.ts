@@ -13,6 +13,9 @@ export interface LeadData {
     roomSize?: string;
     condition: string;
     estimate: number;
+    Q1?: string;
+    Q2?: string;
+    Q3?: string;
 }
 
 export async function saveLeadAction(data: LeadData) {

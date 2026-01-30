@@ -38,6 +38,31 @@ export default function Home() {
 
   const handleCompleteLead = async (whatsapp: string) => {
     // This runs on the server through the Action, bypassing browser Mixed Content blocks
+    // Map Quiz Data to Human Readable Answers for PocketBase
+    const q1Answer = formData.type === 'full_house' ? 'Reabilitação Integral' : 'Intervenção Pontual';
+
+    let q2Answer = '';
+    if (formData.type === 'full_house') {
+      if (formData.area_m2 === 62) q2Answer = "Pequeno (T0/T1)";
+      else if (formData.area_m2 === 87) q2Answer = "Médio (T2)";
+      else if (formData.area_m2 === 125) q2Answer = "Grande (T3)";
+      else if (formData.area_m2 === 165) q2Answer = "Master (T4+)";
+      else q2Answer = `${formData.area_m2} m²`;
+    } else {
+      const sizeLabel = formData.roomSize === 'Pequeno' ? 'Compacto' :
+        formData.roomSize === 'Médio' ? 'Standard' :
+          formData.roomSize === 'Grande' ? 'Espaçoso' : formData.roomSize;
+      q2Answer = `${formData.roomType} - ${sizeLabel}`;
+    }
+
+    let q3Answer = '';
+    switch (formData.condition) {
+      case 'light': q3Answer = "Bom Estado"; break;
+      case 'medium': q3Answer = "Necessita Atualização"; break;
+      case 'total': q3Answer = "Degradado / Total"; break;
+      default: q3Answer = formData.condition;
+    }
+
     await saveLeadAction({
       Whatsapp: whatsapp,
       type: formData.type,
@@ -45,7 +70,10 @@ export default function Home() {
       roomType: formData.roomType,
       roomSize: formData.roomSize,
       condition: formData.condition,
-      estimate: formData.calculatedValue || 0
+      estimate: formData.calculatedValue || 0,
+      Q1: q1Answer,
+      Q2: q2Answer,
+      Q3: q3Answer
     });
 
     setFormData(prev => ({

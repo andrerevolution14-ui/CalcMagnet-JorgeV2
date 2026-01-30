@@ -20,7 +20,7 @@ export default function Results({ data }: ResultsProps) {
     const { calculatedValue } = data;
 
     // Direct WhatsApp Link (Updated to user's new link)
-    const whatsappLink = `https://wa.link/00orml`;
+    const whatsappLink = `https://wa.link/zetscz`;
 
     const handleWhatsApp = () => {
         // Track Facebook HighLead Event (Value 3 as requested)
